@@ -1,0 +1,5 @@
+videos/*/build/
+videos/*/vo/vo_comp_raw.wav
+videos/*/vo/*.whisper.json
+__pycache__/
+*.pyc
