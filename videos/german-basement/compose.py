@@ -150,7 +150,7 @@ def hud_ping(frame, t):
         cv2.rectangle(frame, (x0, HUD_Y + 58 - hgt), (x0 + 16, HUD_Y + 62), color, -1)
 
 
-TRACE = [("trace0", 0.0, "> tracert igor", G.WHITE), ("trace0", 0.28, " 1  подвал Германа      1 мс", G.GREEN),
+TRACE = [("trace0", 0.0, "> tracert Игорь", G.WHITE), ("trace0", 0.28, " 1  подвал Германа      1 мс", G.GREEN),
          ("trace1", 0.0, " 2  бетонная плита     80 мс", G.YELLOW), ("trace2", 0.0, " 3  Аргентина         159 мс", G.RED),
          ("trace3", 0.0, "    ИТОГО: 240 мс = НОРМА", G.YELLOW)]
 
@@ -192,7 +192,7 @@ def hud_tps(frame, t):
         if int((t - C["freeze2"]) * 8) % 2:
             return
     col = G.GREEN if v >= 18 else (G.YELLOW if v >= 12 else G.RED)
-    hud(frame, f"TPS: {v:.1f}", col, size=76)
+    hud(frame, f"ТПС: {v:.1f}", col, size=76)
 
 
 def hud_humidity(frame, t):

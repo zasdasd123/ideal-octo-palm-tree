@@ -3,7 +3,7 @@
 
     finish.py pass1 | pass2 | qa     (two x264 passes are separate steps so each stays short)
 
-pass2 writes final.mp4 (1080x1920, 60 fps, ~9 Mbps H.264 + AAC) and cover.jpg next to this file.
+pass2 writes final.mp4 (1080x1920, 60 fps, ~8 Mbps H.264 + AAC, just under 50 MB) and cover.jpg next to this file.
 """
 import json
 import os
@@ -17,7 +17,7 @@ BUILD = os.path.join(HERE, "build")
 MASTER, MIX = os.path.join(BUILD, "master.mp4"), os.path.join(BUILD, "audio", "mix.wav")
 FINAL, COVER = os.path.join(HERE, "final.mp4"), os.path.join(HERE, "cover.jpg")
 VIDEO = ["-c:v", "libx264", "-preset", "medium", "-profile:v", "high", "-level", "4.2", "-pix_fmt", "yuv420p",
-         "-b:v", "9000k", "-maxrate", "13000k", "-bufsize", "18000k", "-r", "60", "-g", "120", "-bf", "2",
+         "-b:v", "8055k", "-maxrate", "20000k", "-bufsize", "30000k", "-r", "60", "-g", "120", "-bf", "2",
          "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv",
          "-passlogfile", os.path.join(BUILD, "x264pass")]
 
@@ -32,7 +32,7 @@ def pass1():
 
 def pass2():
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", MASTER, "-i", MIX, "-map", "0:v:0", "-map", "1:a:0", *VIDEO, "-pass", "2",
-                    "-c:a", "aac", "-b:a", "256k", "-ar", "48000", "-ac", "2", "-shortest", "-movflags", "+faststart", FINAL], check=True)
+                    "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-ac", "2", "-shortest", "-movflags", "+faststart", FINAL], check=True)
     import edit as ED
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{ED.C['label_basement'] + 0.5:.2f}", "-i", FINAL, "-frames:v", "1",
                     "-q:v", "2", COVER], check=True)
