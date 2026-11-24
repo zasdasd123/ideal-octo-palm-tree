@@ -33,7 +33,7 @@ the picture and mix can be rebuilt without spending TTS credits.
 
 - `pipeline/tts.py`, `vo_comp.py`, `qa_take.py`, `qa_vo.py` — ElevenLabs takes, sentence-level comp, Whisper checks.
 - `pipeline/vox/` — small CPU voxel raycaster (`vox.c`), procedural 16×16 textures and world builders. All
-  footage is rendered here, so nothing is matched against existing gameplay uploads.
+  footage is rendered here (a Minecraft-style look, not a recording of the game), so no frame matches an existing upload.
 - `pipeline/synth.py` — drums, bass, cowbell and sound effects generated from code.
 - `pipeline/gfx.py` — caption/stamp sprites and frame effects.
 - `assets/fonts` — Montserrat, Russo One, Monocraft, JetBrains Mono (SIL OFL, licences included).
